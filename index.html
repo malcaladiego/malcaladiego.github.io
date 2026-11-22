@@ -1,73 +1,571 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#F0EDE7">
-<meta name="description" content="Diego M. Alcalá — Spatial Design / Brand Worlds. An exploration of space, identity and experiences. Full website coming soon.">
-<title>Diego M. Alcalá — Spatial Design / Brand Worlds</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-html,body{margin:0;padding:0;background:#F0EDE7}
-.diego-landing,.diego-landing *{box-sizing:border-box}
-.diego-landing{--bone:#F0EDE7;--ink:#161414;--wine:#3B1523;position:relative;width:100%;min-height:100vh;min-height:100svh;padding:clamp(24px,4vw,70px);display:flex;flex-direction:column;background:var(--bone);color:var(--ink);font-family:"DM Sans",Arial,sans-serif}
-.diego-header{display:flex;justify-content:space-between;align-items:flex-start;gap:30px;flex-shrink:0;animation:diegoFade 1.2s ease both}
-.diego-identity{display:flex;flex-direction:column;align-items:flex-start}
-.diego-name{font-family:"Bodoni Moda",Georgia,serif;font-size:clamp(25px,2.3vw,38px);font-weight:400;letter-spacing:-.045em;line-height:1.15}
-.diego-specialty{margin-top:10px;font-size:11px;letter-spacing:.035em;opacity:.65}
-.diego-practice{font-size:10px;letter-spacing:.14em;opacity:.55}
-.diego-main{flex:1;min-height:0;display:flex;flex-direction:column;justify-content:center;padding:clamp(30px,5vh,65px) 0}
-.diego-content{animation:diegoReveal 1.8s cubic-bezier(.19,1,.22,1) both;animation-delay:.2s}
-.diego-status{display:flex;align-items:center;gap:13px;margin-bottom:clamp(14px,2vh,28px);font-size:10px;letter-spacing:.2em}
-.diego-dot{display:inline-block;width:6px;height:6px;flex-shrink:0;background:var(--wine);border-radius:50%;animation:diegoPulse 2.8s ease-in-out infinite}
-.diego-landing .diego-title{margin:0;padding:0;font-family:"Bodoni Moda",Georgia,serif;font-size:clamp(68px,10.5vw,185px);font-weight:400;line-height:.91;letter-spacing:-.075em;text-align:left;color:var(--ink)}
-.diego-title span{display:block}
-.diego-title span:last-child{font-style:italic;font-size:1.08em;letter-spacing:-.085em;color:var(--wine);transform-origin:left center;transition:color .8s cubic-bezier(.19,1,.22,1),transform .8s cubic-bezier(.19,1,.22,1)}
-@media(hover:hover){.diego-title:hover span:last-child{color:#240C16;transform:translateX(8px)}}
-.diego-description{margin-top:clamp(20px,3vh,34px);margin-left:4px;max-width:480px;font-size:clamp(12px,1vw,15px);line-height:1.65;opacity:.7}
-.diego-description p{margin:0 0 4px}
-.diego-footer{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-shrink:0;padding-top:12px;font-size:10px;letter-spacing:.12em;animation:diegoFade 1.2s ease both;animation-delay:.8s}
-.diego-contact{display:inline-block;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:5px;transition:color .3s ease,border-color .3s ease}
-.diego-contact:hover{color:var(--wine);border-color:var(--wine)}
-.diego-landing::after{content:"EST. MMXXVI — MADRID";position:absolute;right:22px;top:50%;writing-mode:vertical-rl;transform:translateY(-50%);font-size:9px;letter-spacing:.22em;color:var(--wine);opacity:.45;pointer-events:none}
-@keyframes diegoFade{from{opacity:0}to{opacity:1}}
-@keyframes diegoReveal{from{opacity:0;transform:translateY(35px);filter:blur(8px)}to{opacity:1;transform:translateY(0);filter:blur(0)}}
-@keyframes diegoPulse{0%,100%{opacity:1}50%{opacity:.2}}
-@media(max-height:650px) and (min-width:769px){.diego-landing .diego-title{font-size:clamp(65px,9vw,140px)}.diego-main{padding:20px 0}}
-@media(max-width:768px){
-.diego-landing{padding:32px 22px 24px;min-height:100svh;overflow:visible}
-.diego-practice,.diego-landing::after{display:none}
-.diego-header,.diego-main,.diego-content,.diego-footer{width:100%}
-.diego-name{font-size:clamp(23px,6.5vw,29px);line-height:1.2;letter-spacing:-.045em}
-.diego-specialty{margin-top:8px;font-size:10px;letter-spacing:.01em;line-height:1.5}
-.diego-main{min-width:0;padding:35px 0}
-.diego-content{min-width:0}
-.diego-status{margin-bottom:22px;font-size:9px}
-.diego-landing .diego-title{font-size:clamp(42px,10.5vw,76px);line-height:.98;letter-spacing:-.075em;max-width:100%}
-.diego-title span{white-space:nowrap}
-.diego-title span:last-child{font-size:1.04em;letter-spacing:-.085em}
-.diego-description{margin:30px 0 0;padding:0;max-width:100%;font-size:12px;line-height:1.6;text-align:left}
-.diego-description p{margin:0 0 6px;text-align:left}
-.diego-footer{font-size:9px;padding-top:15px;letter-spacing:.04em;gap:12px}
-.diego-location,.diego-contact{white-space:nowrap}
-}
-@media(prefers-reduced-motion:reduce){.diego-header,.diego-content,.diego-footer,.diego-dot{animation:none}.diego-title span:last-child{transition:none}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Diego M. Alcalá — Spatial Design / Brand Worlds</title>
+
+  <meta
+    name="description"
+    content="Diego M. Alcalá — Independent creative practice exploring spatial design, brand worlds and experiences. Based in Madrid."
+  >
+
+  <meta name="theme-color" content="#111010">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=DM+Sans:wght@400;500&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+
+    /* ==========================================
+       DIEGO M. ALCALÁ
+       NOCTURNE — FINAL EDITION
+    ========================================== */
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background: #111010;
+    }
+
+    body {
+      min-width: 320px;
+    }
+
+    .diego-landing {
+      --night: #111010;
+      --ivory: #E8E2D9;
+      --stone: #B8AFA6;
+      --smoke: #918A86;
+      --silver: #A6A5A2;
+
+      position: relative;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      width: 100%;
+      min-height: 100vh;
+      min-height: 100svh;
+
+      padding: clamp(24px, 4vw, 70px);
+
+      background: var(--night);
+      color: var(--ivory);
+
+      font-family: "DM Sans", Arial, sans-serif;
+
+      overflow: hidden;
+    }
+
+    /* HEADER */
+
+    .diego-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+
+      gap: 30px;
+      flex-shrink: 0;
+
+      animation: diegoFade 1.2s ease both;
+    }
+
+    .diego-identity {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .diego-name {
+      font-family: "Bodoni Moda", Georgia, serif;
+
+      font-size: clamp(25px, 2.3vw, 38px);
+      font-weight: 400;
+      font-style: normal;
+
+      line-height: 1.15;
+      letter-spacing: -0.045em;
+
+      color: var(--ivory);
+    }
+
+    .diego-specialty {
+      margin-top: 10px;
+
+      font-size: 11px;
+      line-height: 1.5;
+      letter-spacing: 0.035em;
+
+      color: #B2AAA4;
+    }
+
+    .diego-practice {
+      font-size: 10px;
+      letter-spacing: 0.14em;
+
+      color: var(--smoke);
+    }
+
+    /* MAIN */
+
+    .diego-main {
+      position: relative;
+
+      flex: 1;
+      min-height: 0;
+
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      padding: clamp(30px, 5vh, 65px) 0;
+    }
+
+    .diego-content {
+      position: relative;
+      width: 100%;
+
+      animation: diegoReveal 1.8s
+        cubic-bezier(.19, 1, .22, 1) both;
+
+      animation-delay: 0.2s;
+    }
+
+    /* STATUS */
+
+    .diego-status {
+      display: flex;
+      align-items: center;
+
+      gap: 13px;
+
+      margin-bottom: clamp(14px, 2vh, 28px);
+
+      font-size: 10px;
+      letter-spacing: 0.2em;
+
+      color: #A69D96;
+    }
+
+    .diego-dot {
+      display: inline-block;
+
+      width: 6px;
+      height: 6px;
+
+      flex-shrink: 0;
+
+      background: var(--silver);
+      border-radius: 50%;
+
+      animation: diegoPulse 2.8s ease-in-out infinite;
+    }
+
+    /* TITLE */
+
+    .diego-title {
+      margin: 0;
+      padding: 0;
+
+      font-family: "Bodoni Moda", Georgia, serif;
+
+      font-size: clamp(68px, 10.5vw, 185px);
+      font-weight: 400;
+      font-style: normal;
+
+      line-height: 0.91;
+      letter-spacing: -0.075em;
+
+      text-align: left;
+      text-transform: none;
+
+      color: var(--ivory);
+    }
+
+    .diego-title,
+    .diego-title span {
+      text-decoration: none;
+      text-shadow: none;
+      -webkit-text-stroke: 0;
+      background-image: none;
+      border: 0;
+    }
+
+    .diego-title-first,
+    .diego-title-second {
+      display: block;
+
+      font-family: "Bodoni Moda", Georgia, serif;
+      font-weight: 400;
+
+      text-transform: none;
+    }
+
+    .diego-title-first {
+      font-style: normal;
+      color: var(--ivory);
+    }
+
+    .diego-title-second {
+      font-style: italic;
+
+      font-size: 1.08em;
+      line-height: 1;
+      letter-spacing: -0.085em;
+
+      color: var(--stone);
+
+      transform-origin: left center;
+
+      transition:
+        color 1.4s ease,
+        transform 1.4s cubic-bezier(.19, 1, .22, 1);
+    }
+
+    /* REFINED PERIOD */
+
+    .diego-period {
+      display: inline;
+
+      font-family: inherit;
+      font-style: inherit;
+      font-weight: inherit;
+
+      font-size: 0.72em;
+      line-height: 0;
+
+      letter-spacing: -0.12em;
+
+      color: inherit;
+      vertical-align: baseline;
+    }
+
+    /* HOVER */
+
+    @media (hover: hover) {
+
+      .diego-title-second:hover {
+        color: var(--ivory);
+        transform: translateX(4px);
+      }
+
+    }
+
+    /* DESCRIPTION */
+
+    .diego-description {
+      margin-top: clamp(22px, 3vh, 36px);
+      margin-left: 4px;
+
+      max-width: 520px;
+
+      font-size: clamp(12px, 1vw, 15px);
+      line-height: 1.7;
+
+      color: #B8AFA6;
+    }
+
+    .diego-description p {
+      margin: 0 0 4px;
+      text-align: left;
+    }
+
+    /* FOOTER */
+
+    .diego-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+
+      gap: 20px;
+      flex-shrink: 0;
+
+      padding-top: 12px;
+
+      font-size: 10px;
+      letter-spacing: 0.12em;
+
+      color: #A69D96;
+
+      animation: diegoFade 1.2s ease both;
+      animation-delay: 0.8s;
+    }
+
+    .diego-contact {
+      display: inline-block;
+
+      color: var(--ivory);
+      text-decoration: none;
+
+      border-bottom: 1px solid rgba(232, 226, 217, 0.5);
+
+      padding-bottom: 5px;
+
+      transition:
+        color 0.3s ease,
+        border-color 0.3s ease;
+    }
+
+    .diego-contact:hover {
+      color: var(--stone);
+      border-color: var(--stone);
+    }
+
+    /* VERTICAL INSCRIPTION */
+
+    .diego-landing::after {
+      content: "EST. MMXXVI — MADRID";
+
+      position: absolute;
+
+      right: 22px;
+      top: 50%;
+
+      writing-mode: vertical-rl;
+      transform: translateY(-50%);
+
+      font-size: 9px;
+      letter-spacing: 0.22em;
+
+      color: var(--smoke);
+      opacity: 0.5;
+
+      pointer-events: none;
+    }
+
+    /* ANIMATIONS */
+
+    @keyframes diegoFade {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes diegoReveal {
+      from {
+        opacity: 0;
+        transform: translateY(35px);
+        filter: blur(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+      }
+    }
+
+    @keyframes diegoPulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.2; }
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 768px) {
+
+      .diego-landing {
+        padding: 32px 22px 24px;
+        min-height: 100svh;
+        overflow: hidden;
+      }
+
+      .diego-practice,
+      .diego-landing::after {
+        display: none;
+      }
+
+      .diego-header {
+        width: 100%;
+      }
+
+      .diego-name {
+        font-size: clamp(23px, 6.5vw, 29px);
+        line-height: 1.2;
+      }
+
+      .diego-specialty {
+        margin-top: 8px;
+        font-size: 10px;
+      }
+
+      .diego-main {
+        width: 100%;
+        min-width: 0;
+        padding: 35px 0;
+      }
+
+      .diego-content {
+        width: 100%;
+        min-width: 0;
+      }
+
+      .diego-status {
+        margin-bottom: 22px;
+        font-size: 9px;
+      }
+
+      .diego-title {
+        font-size: clamp(34px, 9.2vw, 65px);
+        line-height: 0.98;
+        width: 100%;
+        max-width: 100%;
+      }
+
+      .diego-title-first,
+      .diego-title-second {
+        white-space: nowrap;
+      }
+
+      .diego-title-second {
+        font-size: 0.96em;
+        letter-spacing: -0.09em;
+      }
+
+      .diego-description {
+        margin: 28px 0 0;
+        padding: 0;
+
+        width: 100%;
+        max-width: 100%;
+
+        font-size: 12px;
+        line-height: 1.6;
+      }
+
+      .diego-description p {
+        margin: 0 0 6px;
+        text-align: left;
+      }
+
+      .diego-footer {
+        width: 100%;
+        gap: 12px;
+
+        font-size: 9px;
+        letter-spacing: 0.04em;
+      }
+
+      .diego-location,
+      .diego-contact {
+        white-space: nowrap;
+      }
+
+    }
+
+    /* SHORT DESKTOP SCREENS */
+
+    @media (max-height: 650px) and (min-width: 769px) {
+
+      .diego-title {
+        font-size: clamp(65px, 9vw, 140px);
+      }
+
+      .diego-main {
+        padding: 20px 0;
+      }
+
+    }
+
+    /* REDUCED MOTION */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .diego-header,
+      .diego-content,
+      .diego-footer,
+      .diego-dot {
+        animation: none;
+      }
+
+      .diego-title-second {
+        transition: none;
+      }
+
+    }
+
+  </style>
 </head>
+
 <body>
-<div class="diego-landing">
-<header class="diego-header">
-<div class="diego-identity"><div class="diego-name">DIEGO M. ALCALÁ</div><div class="diego-specialty">Spatial Design / Brand Worlds</div></div>
-<div class="diego-practice">INDEPENDENT CREATIVE PRACTICE</div>
-</header>
-<main class="diego-main"><div class="diego-content">
-<div class="diego-status"><span class="diego-dot"></span><span>CURRENTLY BUILDING</span></div>
-<h1 class="diego-title"><span>WORK IN</span><span>PROGRESS.</span></h1>
-<div class="diego-description"><p>An exploration of space, identity and experiences.</p><p>Full website coming soon.</p></div>
-</div></main>
-<footer class="diego-footer"><div class="diego-location">MADRID, ES — 2026</div><a class="diego-contact" href="mailto:malcaladiego@gmail.com">CONTACT ↗</a></footer>
-</div>
+
+  <div class="diego-landing">
+
+    <!-- HEADER -->
+
+    <header class="diego-header">
+
+      <div class="diego-identity">
+        <div class="diego-name">DIEGO M. ALCALÁ</div>
+        <div class="diego-specialty">
+          Spatial Design / Brand Worlds
+        </div>
+      </div>
+
+      <div class="diego-practice">
+        INDEPENDENT CREATIVE PRACTICE
+      </div>
+
+    </header>
+
+    <!-- MAIN -->
+
+    <main class="diego-main">
+
+      <div class="diego-content">
+
+        <div class="diego-status">
+          <span class="diego-dot"></span>
+          <span>CURRENTLY BUILDING</span>
+        </div>
+
+        <h1 class="diego-title">
+          <span class="diego-title-first">WORK IN</span>
+          <span class="diego-title-second">
+            PROGRESS<span class="diego-period">.</span>
+          </span>
+        </h1>
+
+        <div class="diego-description">
+          <p>Exploring the space between identity and experience.</p>
+          <p>Full website coming soon.</p>
+        </div>
+
+      </div>
+
+    </main>
+
+    <!-- FOOTER -->
+
+    <footer class="diego-footer">
+
+      <span class="diego-location">
+        MADRID, ES — 2026
+      </span>
+
+      <a
+        class="diego-contact"
+        href="mailto:malcaladiego@gmail.com"
+      >
+        CONTACT ↗
+      </a>
+
+    </footer>
+
+  </div>
+
 </body>
 </html>
