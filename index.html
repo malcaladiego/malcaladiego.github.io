@@ -1,77 +1,605 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#111010">
-<meta name="description" content="Diego M. Alcalá — Spatial Design, Art Direction & Brand Experiences. Independent creative practice based in Madrid.">
-<title>Diego M. Alcalá — Spatial Design / Brand Worlds</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>DIEGO M. ALCALÁ — Creative Studio</title>
+
+<meta name="description" content="Independent creative studio exploring the beauty of the ordinary and the strange.">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;1,6..96,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+
 <style>
-:root{--bg:#111010;--ivory:#e8e2d9;--stone:#b8afa6;--silver:rgba(194,192,189,.72)}
-*{box-sizing:border-box}html{background:var(--bg)}body{margin:0;background:var(--bg);color:var(--ivory);font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased}button,a{-webkit-tap-highlight-color:transparent}button{font:inherit}
-.page{min-height:100svh;display:flex;flex-direction:column;padding:clamp(25px,3.7vw,56px) clamp(23px,4.2vw,70px) 28px}
-header{display:flex;justify-content:space-between;align-items:flex-start;gap:24px}.name{font-family:'Bodoni Moda',serif;font-size:clamp(26px,2.4vw,38px);letter-spacing:-.045em;line-height:1.1}.sub{font-size:11px;color:#b2aaa4;letter-spacing:.02em;margin-top:9px}.header-note{font-size:10px;letter-spacing:.16em;color:#918a86;margin-top:4px;text-align:right}
-main{flex:1;display:flex;align-items:center;justify-content:center;padding:50px 0 38px}.composition{width:100%;display:flex;flex-direction:column;align-items:center;text-align:center}
-.eyebrow{font-size:9px;letter-spacing:.23em;color:#a49b94;margin-bottom:20px;text-transform:uppercase}
-.mosaic{position:relative;width:min(360px,72vw);aspect-ratio:1;overflow:hidden;background:#191717;isolation:isolate;box-shadow:0 0 0 .5px var(--silver)}
-.cells{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);width:100%;height:100%}.cell{position:relative;overflow:hidden;min-width:0;min-height:0;border:0;padding:0;background:#191717;cursor:zoom-in}.cell img,.strip-tile img{display:block;width:100%;height:100%;object-fit:cover;filter:saturate(.85) brightness(.9);transition:filter .55s ease}.cell::after,.strip-tile::after{content:'';position:absolute;inset:0;background:rgba(17,16,16,.15);pointer-events:none;transition:opacity .55s ease}.cell:hover img{filter:saturate(1) brightness(1)}.cell:hover::after{opacity:0}
-/* The fine silver grid stays stationary while photographs slide underneath. */
-.gridlines{position:absolute;inset:0;pointer-events:none;z-index:5;background:linear-gradient(to right,transparent calc(33.333% - .5px),var(--silver) 33.333%,transparent calc(33.333% + .5px),transparent calc(66.666% - .5px),var(--silver) 66.666%,transparent calc(66.666% + .5px)),linear-gradient(to bottom,transparent calc(33.333% - .5px),var(--silver) 33.333%,transparent calc(33.333% + .5px),transparent calc(66.666% - .5px),var(--silver) 66.666%,transparent calc(66.666% + .5px))}
-.motion-layer{position:absolute;inset:0;z-index:3;pointer-events:none}.motion-viewport{position:absolute;overflow:hidden}.motion-strip{position:absolute;display:flex;will-change:transform}.motion-strip.vertical{flex-direction:column}.strip-tile{position:relative;flex:none;overflow:hidden}
-.caption{margin-top:17px;font-size:9px;letter-spacing:.18em;color:#8f8883;text-transform:uppercase}
-h1{font-family:'Bodoni Moda',Georgia,serif;font-weight:400;font-size:clamp(24px,2.5vw,36px);line-height:1.22;letter-spacing:-.045em;margin:39px 0 10px}h1 em{font-weight:400}.service{font-size:11px;line-height:1.6;letter-spacing:.025em;color:#b3aaa3;margin:0 0 21px}.cta{font-size:10px;letter-spacing:.13em;color:var(--ivory);text-decoration:none;border-bottom:1px solid rgba(232,226,217,.48);padding-bottom:5px;transition:color .25s,border-color .25s}.cta:hover{color:var(--stone);border-color:var(--stone)}
-footer{display:flex;justify-content:space-between;gap:20px;align-items:end;font-size:10px;letter-spacing:.1em;color:#a49b94}footer a{color:var(--ivory);text-decoration:none;border-bottom:1px solid rgba(232,226,217,.45);padding-bottom:4px}
-.lightbox{position:fixed;inset:0;z-index:30;background:rgba(10,9,9,.96);display:none;align-items:center;justify-content:center;padding:70px 25px}.lightbox.open{display:flex}.lightbox img{max-width:min(1050px,94vw);max-height:78svh;width:auto;height:auto;object-fit:contain}.close{position:absolute;right:clamp(25px,5vw,65px);top:30px;border:0;background:none;color:var(--ivory);font-size:11px;letter-spacing:.14em;cursor:pointer}.lightbox-note{position:absolute;bottom:30px;color:#a49b94;font-size:10px;letter-spacing:.13em}
-@media(max-width:600px){.page{padding:28px 22px 23px}header{text-align:center;justify-content:center}.name{font-size:27px}.sub{font-size:10px}.header-note{display:none}main{padding:46px 0 40px}.mosaic{width:min(310px,78vw)}.eyebrow{font-size:8px;margin-bottom:17px}h1{font-size:clamp(23px,6.4vw,30px);margin-top:34px}.service{font-size:10px}.caption{font-size:8px}footer{font-size:9px;letter-spacing:.04em}}
-@media(max-height:740px) and (min-width:601px){main{padding:25px 0}.mosaic{width:min(295px,44vh)}h1{margin-top:24px}.eyebrow{margin-bottom:13px}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+/* NOCTURNE — VISUAL IDENTITY */
+
+:root {
+    --background: #F5F4F0;
+    --foreground: #24211F;
+    --secondary: #77716C;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: 'DM Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+button {
+    font: inherit;
+    color: inherit;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+/* MAIN COMPOSITION */
+
+.home {
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 24px 110px;
+}
+
+.composition {
+    width: 100%;
+    text-align: center;
+    animation: entrance 1.8s ease both;
+}
+
+.studio-name {
+    font-family: 'Bodoni Moda', serif;
+    font-size: clamp(34px, 7.4vw, 112px);
+    font-weight: 400;
+    letter-spacing: -0.055em;
+    line-height: 1.05;
+    white-space: nowrap;
+}
+
+.studio-description {
+    font-size: 9px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    margin-top: 16px;
+    color: var(--secondary);
+}
+
+/* CINEMATIC WINDOW */
+
+.film-container {
+    width: 350px;
+    max-width: 78vw;
+    margin: 48px auto 0;
+    transform: translateX(35px);
+}
+
+.cinematic-window {
+    display: block;
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #E6E1DA;
+}
+
+.cinematic-window img,
+.cinematic-window video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.cinematic-window img {
+    transition: opacity 0.5s ease;
+}
+
+.cinematic-window:hover img {
+    opacity: 0.88;
+}
+
+/* FILM INFORMATION */
+
+.film-information {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 12px;
+    font-size: 9px;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--secondary);
+}
+
+.film-information button {
+    font-size: 9px;
+    letter-spacing: 0.13em;
+}
+
+/* PROJECT SELECTOR */
+
+.project-selector {
+    display: none;
+    position: absolute;
+    inset: 0;
+    background: rgba(25, 22, 20, 0.87);
+    color: #F5F4F0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 17px;
+}
+
+.project-selector.active {
+    display: flex;
+    animation: entrance 0.4s ease both;
+}
+
+.project-selector button {
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    transition: opacity 0.3s;
+}
+
+.project-selector button:hover {
+    opacity: 0.5;
+}
+
+.project-selector button:disabled {
+    opacity: 0.35;
+    cursor: default;
+}
+
+/* NAVIGATION */
+
+.navigation {
+    position: fixed;
+    bottom: 38px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 48px;
+    z-index: 5;
+}
+
+.navigation button {
+    font-size: 10px;
+    letter-spacing: 0.17em;
+    text-transform: uppercase;
+    transition: opacity 0.3s ease;
+}
+
+.navigation button:hover {
+    opacity: 0.45;
+}
+
+/* INFORMATION PANELS */
+
+.panel {
+    position: fixed;
+    inset: 0;
+    background: var(--background);
+    z-index: 10;
+    display: none;
+    overflow-y: auto;
+    padding: 80px 30px;
+}
+
+.panel.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: entrance 0.5s ease both;
+}
+
+.panel-content {
+    width: 100%;
+    max-width: 650px;
+    text-align: center;
+}
+
+.panel h2 {
+    font-family: 'Bodoni Moda', serif;
+    font-size: clamp(42px, 6vw, 80px);
+    font-weight: 400;
+    letter-spacing: -0.04em;
+    margin-bottom: 35px;
+}
+
+.panel p {
+    font-size: 14px;
+    line-height: 1.9;
+    color: var(--secondary);
+    max-width: 450px;
+    margin: auto;
+}
+
+.close-panel {
+    position: absolute;
+    top: 35px;
+    right: 35px;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+}
+
+.work-list {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.work-list button {
+    font-family: 'Bodoni Moda', serif;
+    font-size: 30px;
+    font-weight: 400;
+}
+
+.work-list span {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    color: var(--secondary);
+    margin-top: 5px;
+}
+
+.project-image {
+    width: 100%;
+    display: block;
+    margin-bottom: 25px;
+}
+
+/* ANIMATION */
+
+@keyframes entrance {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .home {
+        padding: 30px 18px 100px;
+    }
+
+    .studio-name {
+        font-size: clamp(25px, 7.7vw, 46px);
+    }
+
+    .studio-description {
+        font-size: 8px;
+        letter-spacing: 0.18em;
+    }
+
+    .film-container {
+        width: 260px;
+        margin-top: 38px;
+        transform: none;
+    }
+
+    .navigation {
+        bottom: 30px;
+        gap: 26px;
+    }
+
+    .navigation button {
+        font-size: 9px;
+    }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
 </style>
+
 </head>
+
 <body>
-<div class="page">
-<header><div><div class="name">DIEGO M. ALCALÁ</div><div class="sub">Spatial Design / Brand Worlds</div></div><div class="header-note">INDEPENDENT CREATIVE PRACTICE</div></header>
-<main><div class="composition">
-<div class="eyebrow">SELECTED CREATIVE EXPLORATIONS</div>
-<div class="mosaic" id="mosaic" aria-label="Animated archive of creative explorations"><div class="cells" id="cells"></div><div class="motion-layer" id="motionLayer"></div><div class="gridlines"></div></div>
-<div class="caption">AN EVER-CHANGING ARCHIVE — 01 / ∞</div>
-<h1>Let's make something <em>exist.</em></h1>
-<p class="service">Spatial design, art direction &amp; brand experiences.</p>
-<a class="cta" href="mailto:malcaladiego@gmail.com?subject=Creative%20enquiry">START A CONVERSATION ↗</a>
-</div></main>
-<footer><span>MADRID, ES — 2026</span><a href="mailto:malcaladiego@gmail.com">CONTACT ↗</a></footer>
-</div>
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview"><button class="close" id="close" aria-label="Close image">CLOSE ✕</button><img id="lightboxImg" alt="Selected creative exploration"><div class="lightbox-note">SELECTED CREATIVE EXPLORATIONS</div></div>
+
+<!-- HOMEPAGE -->
+
+<main class="home">
+
+    <div class="composition">
+
+        <h1 class="studio-name">
+            DIEGO M. ALCALÁ
+        </h1>
+
+        <p class="studio-description">
+            Independent Creative Studio
+        </p>
+
+        <div class="film-container">
+
+            <div class="cinematic-window">
+
+                <button
+                    onclick="toggleSelector()"
+                    aria-label="Choose a project"
+                    style="width:100%;height:100%;display:block;"
+                >
+
+                    <img
+                        src="boras.png"
+                        alt="Fine sawdust drifting across aged wood"
+                    >
+
+                </button>
+
+                <div
+                    class="project-selector"
+                    id="projectSelector"
+                >
+
+                    <button onclick="openPanel('boras')">
+                        01 — BORAS
+                    </button>
+
+                    <button disabled>
+                        02 — LOEWE
+                    </button>
+
+                    <button disabled>
+                        03 — MIDNIGHT COSMETICS
+                    </button>
+
+                    <button onclick="toggleSelector()">
+                        CLOSE
+                    </button>
+
+                </div>
+
+            </div>
+
+            <div class="film-information">
+
+                <span>01 / 03</span>
+
+                <button onclick="toggleSelector()">
+                    Index +
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+<!-- NAVIGATION -->
+
+<nav class="navigation">
+
+    <button onclick="openPanel('work')">
+        Selected Work
+    </button>
+
+    <button onclick="openPanel('about')">
+        About
+    </button>
+
+    <button onclick="openPanel('contact')">
+        Contact
+    </button>
+
+</nav>
+
+<!-- SELECTED WORK -->
+
+<section class="panel" id="work">
+
+    <button class="close-panel" onclick="closePanels()">
+        Close ×
+    </button>
+
+    <div class="panel-content">
+
+        <h2>Selected Work</h2>
+
+        <div class="work-list">
+
+            <button onclick="openPanel('boras')">
+                BORAS
+                <span>Spatial Design / Fashion</span>
+            </button>
+
+            <button onclick="openPanel('coming-soon')">
+                LOEWE
+                <span>Brand Experience / Concept Study</span>
+            </button>
+
+            <button onclick="openPanel('coming-soon')">
+                Midnight Cosmetics
+                <span>Spatial Design / Installation</span>
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- BORAS PROJECT -->
+
+<section class="panel" id="boras">
+
+    <button class="close-panel" onclick="closePanels()">
+        Close ×
+    </button>
+
+    <div class="panel-content">
+
+        <h2>BORAS</h2>
+
+        <img
+            class="project-image"
+            src="boras.png"
+            alt="BORAS conceptual material study"
+        >
+
+        <p>
+            A dialogue between fashion, materiality
+            and the raw beauty of the everyday.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ABOUT -->
+
+<section class="panel" id="about">
+
+    <button class="close-panel" onclick="closePanels()">
+        Close ×
+    </button>
+
+    <div class="panel-content">
+
+        <h2>About</h2>
+
+        <p>
+            DIEGO M. ALCALÁ is an independent creative
+            studio exploring the relationship between
+            space, image and emotion.
+            <br><br>
+            Finding beauty in the ordinary.
+            And occasionally, the strange.
+            <br><br>
+            Based in Madrid, Spain.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section class="panel" id="contact">
+
+    <button class="close-panel" onclick="closePanels()">
+        Close ×
+    </button>
+
+    <div class="panel-content">
+
+        <h2>Contact</h2>
+
+        <p>
+            Available for creative collaborations,
+            spatial design and brand experiences.
+            <br><br>
+            Contact details coming soon.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- TEMPORARY PROJECT PANEL -->
+
+<section class="panel" id="coming-soon">
+
+    <button class="close-panel" onclick="closePanels()">
+        Close ×
+    </button>
+
+    <div class="panel-content">
+
+        <h2>Coming Soon</h2>
+
+        <p>
+            Currently in development.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- INTERACTIONS -->
+
 <script>
-(()=>{
-'use strict';
-const images=Array.from({length:10},(_,i)=>`images/${String(i+1).padStart(2,'0')}.webp`);
-// An intentional starting arrangement: warm, cool and dark imagery in balance.
-let state=[4,8,9,6,2,0,3,7,5];let reserve=1;
-const cells=document.getElementById('cells'),layer=document.getElementById('motionLayer'),mosaic=document.getElementById('mosaic');
-const lightbox=document.getElementById('lightbox'),preview=document.getElementById('lightboxImg');
-let paused=false,busy=false,timer=null,step=0;
-function img(id){const el=document.createElement('img');el.src=images[id];el.alt='Creative spatial and art direction study';el.draggable=false;return el}
-function draw(){cells.replaceChildren();state.forEach((id,index)=>{const button=document.createElement('button');button.className='cell';button.type='button';button.setAttribute('aria-label',`View creative exploration ${id+1}`);button.append(img(id));button.addEventListener('click',()=>openImage(state[index]));cells.append(button)})}
-function openImage(id){paused=true;preview.src=images[id];lightbox.classList.add('open');document.body.style.overflow='hidden';document.getElementById('close').focus()}
-function closeImage(){lightbox.classList.remove('open');document.body.style.overflow='';paused=false;schedule()}
-document.getElementById('close').addEventListener('click',closeImage);lightbox.addEventListener('click',e=>{if(e.target===lightbox)closeImage()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&lightbox.classList.contains('open'))closeImage()});
-function schedule(){clearTimeout(timer);if(paused||busy||document.hidden||matchMedia('(prefers-reduced-motion: reduce)').matches)return;timer=setTimeout(shift,3400)}
-async function shift(){if(paused||busy)return;busy=true;const vertical=step%2===1;const line=(step*2+1)%3;const indices=vertical?[line,line+3,line+6]:[line*3,line*3+1,line*3+2];const old=indices.map(i=>state[i]);const next=[old[1],old[2],reserve];const cellSize=mosaic.clientWidth/3;
-const viewport=document.createElement('div');viewport.className='motion-viewport';viewport.style.left=`${vertical?line*cellSize:0}px`;viewport.style.top=`${vertical?0:line*cellSize}px`;viewport.style.width=`${vertical?cellSize:cellSize*3}px`;viewport.style.height=`${vertical?cellSize*3:cellSize}px`;
-const strip=document.createElement('div');strip.className='motion-strip'+(vertical?' vertical':'');strip.style.width=`${vertical?cellSize:cellSize*4}px`;strip.style.height=`${vertical?cellSize*4:cellSize}px`;
-[...old,reserve].forEach(id=>{const tile=document.createElement('div');tile.className='strip-tile';tile.style.width=cellSize+'px';tile.style.height=cellSize+'px';tile.append(img(id));strip.append(tile)});
-viewport.append(strip);layer.append(viewport);
-// Hide only the three underlying tiles while their animated counterparts pass through.
-indices.forEach(i=>cells.children[i].style.visibility='hidden');
-try{const animation=strip.animate([{transform:'translate3d(0,0,0)'},{transform:vertical?`translate3d(0,-${cellSize}px,0)`:`translate3d(-${cellSize}px,0,0)`}],{duration:1150,easing:'cubic-bezier(.76,0,.24,1)',fill:'forwards'});await animation.finished}catch(e){}
-reserve=old[0];indices.forEach((i,k)=>state[i]=next[k]);draw();layer.replaceChildren();busy=false;step++;schedule()}
-// Hover pauses the *next* movement, never leaves the grid half-way through a transition.
-mosaic.addEventListener('mouseenter',()=>{paused=true;clearTimeout(timer)});mosaic.addEventListener('mouseleave',()=>{paused=false;schedule()});document.addEventListener('visibilitychange',()=>{if(!document.hidden)schedule();else clearTimeout(timer)});
-images.forEach(src=>{const pre=new Image();pre.src=src});draw();schedule();
-})();
+
+function toggleSelector() {
+
+    document
+        .getElementById('projectSelector')
+        .classList.toggle('active');
+
+}
+
+function openPanel(id) {
+
+    closePanels();
+
+    document
+        .getElementById('projectSelector')
+        .classList.remove('active');
+
+    document
+        .getElementById(id)
+        .classList.add('active');
+
+}
+
+function closePanels() {
+
+    document
+        .querySelectorAll('.panel')
+        .forEach(panel => {
+            panel.classList.remove('active');
+        });
+
+}
+
+document.addEventListener('keydown', function(event) {
+
+    if (event.key === 'Escape') {
+
+        closePanels();
+
+        document
+            .getElementById('projectSelector')
+            .classList.remove('active');
+
+    }
+
+});
+
 </script>
+
 </body>
+
 </html>
