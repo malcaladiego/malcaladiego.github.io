@@ -6,23 +6,27 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>DIEGO M. ALCALÁ — Creative Studio</title>
+<title>DIEGO M. ALCALÁ — Brand Worlds</title>
 
-<meta name="description" content="Independent creative studio exploring the beauty of the ordinary and the strange.">
+<meta name="description" content="Independent creative practice exploring the beauty of the ordinary and the strange.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
 
 <style>
 
-/* NOCTURNE — VISUAL IDENTITY */
+/* =================================
+   NOCTURNE — VERSION 02
+   ================================= */
 
 :root {
-    --background: #F5F4F0;
-    --foreground: #24211F;
-    --secondary: #77716C;
+    --paper: #EDEAE3;
+    --ink: #24201E;
+    --muted: #827B73;
+    --accent: #54282F;
+    --line: rgba(36,32,30,0.22);
 }
 
 * {
@@ -31,284 +35,657 @@
     padding: 0;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    background: var(--background);
-    color: var(--foreground);
+    background: var(--paper);
+    color: var(--ink);
     font-family: 'DM Sans', sans-serif;
     -webkit-font-smoothing: antialiased;
 }
 
-button {
-    font: inherit;
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.13;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.92' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' opacity='.25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+button, a {
     color: inherit;
+    font: inherit;
+}
+
+button {
     border: none;
     background: none;
     cursor: pointer;
 }
 
-/* MAIN COMPOSITION */
+button:focus-visible,
+a:focus-visible {
+    outline: 1px solid var(--accent);
+    outline-offset: 6px;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* =================================
+   PERIPHERAL INFORMATION
+   ================================= */
+
+.top-bar {
+    position: absolute;
+    top: 36px;
+    left: 42px;
+    right: 42px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.micro-text {
+    font-size: 9px;
+    line-height: 1.7;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.location {
+    text-align: right;
+}
+
+.location span {
+    color: var(--muted);
+}
+
+/* =================================
+   HOMEPAGE
+   ================================= */
 
 .home {
     min-height: 100svh;
     display: flex;
-    flex-direction: column;
-    align-items: center;
     justify-content: center;
-    padding: 40px 24px 110px;
+    align-items: center;
+    padding: 100px 30px 120px;
 }
 
 .composition {
     width: 100%;
+    max-width: 1000px;
+    animation: appear 1.5s ease both;
+}
+
+.identity {
     text-align: center;
-    animation: entrance 1.8s ease both;
 }
 
 .studio-name {
-    font-family: 'Bodoni Moda', serif;
-    font-size: clamp(34px, 7.4vw, 112px);
-    font-weight: 400;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 500;
+    font-size: clamp(40px, 6.4vw, 96px);
     letter-spacing: -0.055em;
-    line-height: 1.05;
-    white-space: nowrap;
+    line-height: 0.95;
 }
 
-.studio-description {
+.studio-subtitle {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 22px;
+    font-style: italic;
+    color: var(--accent);
+    margin-top: 14px;
+}
+
+/* =================================
+   ARCHIVE COMPOSITION
+   ================================= */
+
+.archive {
+    display: grid;
+    grid-template-columns: 150px minmax(0, 370px) 150px;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin: 54px auto 0;
+}
+
+.archive-label {
+    align-self: start;
+    padding-top: 26px;
+    text-align: right;
+}
+
+.archive-number {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px;
+    font-weight: 400;
+    color: var(--accent);
+    line-height: 1;
+}
+
+.archive-category {
+    margin-top: 13px;
     font-size: 9px;
-    letter-spacing: 0.24em;
+    letter-spacing: 0.15em;
+    line-height: 1.8;
     text-transform: uppercase;
-    margin-top: 16px;
-    color: var(--secondary);
 }
 
-/* CINEMATIC WINDOW */
+.archive-category span {
+    color: var(--muted);
+}
+
+.archive-note {
+    align-self: end;
+    padding-bottom: 42px;
+}
+
+.archive-note p {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 20px;
+    line-height: 1.15;
+}
+
+.archive-note span {
+    display: block;
+    margin-top: 12px;
+    font-size: 8px;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    text-transform: uppercase;
+}
+
+/* =================================
+   CINEMATIC WINDOW
+   ================================= */
 
 .film-container {
-    width: 350px;
-    max-width: 78vw;
-    margin: 48px auto 0;
-    transform: translateX(35px);
+    width: 100%;
 }
 
-.cinematic-window {
-    display: block;
+.film-frame {
+    position: relative;
+    border: 1px solid var(--line);
+    padding: 5px;
+}
+
+.film-window {
     position: relative;
     width: 100%;
     aspect-ratio: 16 / 9;
     overflow: hidden;
-    background: #E6E1DA;
+    background: #D8D0C5;
 }
 
-.cinematic-window img,
-.cinematic-window video {
+.film-trigger {
+    display: block;
     width: 100%;
     height: 100%;
+}
+
+.film-window img,
+.film-window video {
     display: block;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
+    transition: transform 1.4s ease,
+                filter 0.6s ease;
 }
 
-.cinematic-window img {
-    transition: opacity 0.5s ease;
+.film-trigger:hover img {
+    transform: scale(1.025);
+    filter: brightness(0.92);
 }
 
-.cinematic-window:hover img {
-    opacity: 0.88;
-}
-
-/* FILM INFORMATION */
-
-.film-information {
+.film-caption {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 12px;
+    margin-top: 13px;
+    gap: 10px;
+}
+
+.film-title {
     font-size: 9px;
     letter-spacing: 0.13em;
     text-transform: uppercase;
-    color: var(--secondary);
 }
 
-.film-information button {
+.film-caption button {
     font-size: 9px;
-    letter-spacing: 0.13em;
+    color: var(--accent);
+    letter-spacing: 0.12em;
 }
 
-/* PROJECT SELECTOR */
+.film-caption button:hover {
+    text-decoration: underline;
+}
 
-.project-selector {
-    display: none;
-    position: absolute;
-    inset: 0;
-    background: rgba(25, 22, 20, 0.87);
-    color: #F5F4F0;
-    flex-direction: column;
+/* =================================
+   PROJECT INDEX
+   ================================= */
+
+.archive-index {
+    display: flex;
     justify-content: center;
     align-items: center;
     gap: 17px;
+    margin-top: 26px;
 }
 
-.project-selector.active {
+.archive-index button {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 19px;
+    color: var(--muted);
+    transition: color 0.3s;
+}
+
+.archive-index button.active {
+    color: var(--accent);
+    border-bottom: 1px solid var(--accent);
+}
+
+.archive-index button:hover {
+    color: var(--accent);
+}
+
+.index-divider {
+    width: 17px;
+    height: 1px;
+    background: var(--line);
+}
+
+/* =================================
+   WINDOW OVERLAY
+   ================================= */
+
+.selector {
+    position: absolute;
+    inset: 0;
+    background: rgba(36,32,30,0.92);
+    color: var(--paper);
     display: flex;
-    animation: entrance 0.4s ease both;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 13px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s,
+                visibility 0.4s;
 }
 
-.project-selector button {
-    font-size: 10px;
-    letter-spacing: 0.15em;
-    transition: opacity 0.3s;
+.selector.active {
+    opacity: 1;
+    visibility: visible;
 }
 
-.project-selector button:hover {
+.selector-heading {
+    font-size: 8px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
     opacity: 0.5;
 }
 
-.project-selector button:disabled {
-    opacity: 0.35;
-    cursor: default;
+.selector button {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 21px;
+    line-height: 1;
 }
 
-/* NAVIGATION */
+.selector button:hover {
+    opacity: 0.6;
+}
+
+.selector .selector-close {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    margin-top: 6px;
+}
+
+/* =================================
+   FOOTER NAVIGATION
+   ================================= */
+
+.footer {
+    position: absolute;
+    bottom: 30px;
+    left: 42px;
+    right: 42px;
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    align-items: center;
+    border-top: 1px solid var(--line);
+    padding-top: 18px;
+}
+
+.footer-note {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    font-style: italic;
+    color: var(--muted);
+}
 
 .navigation {
-    position: fixed;
-    bottom: 38px;
-    left: 0;
-    width: 100%;
     display: flex;
     justify-content: center;
-    gap: 48px;
-    z-index: 5;
+    gap: 36px;
 }
 
 .navigation button {
     font-size: 10px;
-    letter-spacing: 0.17em;
     text-transform: uppercase;
-    transition: opacity 0.3s ease;
+    letter-spacing: 0.15em;
+    transition: color 0.3s;
 }
 
 .navigation button:hover {
-    opacity: 0.45;
+    color: var(--accent);
 }
 
-/* INFORMATION PANELS */
+.footer-year {
+    text-align: right;
+    font-size: 9px;
+    letter-spacing: 0.12em;
+}
+
+/* =================================
+   CONTENT PANELS
+   ================================= */
 
 .panel {
     position: fixed;
     inset: 0;
-    background: var(--background);
-    z-index: 10;
-    display: none;
+    z-index: 50;
+    background: var(--paper);
     overflow-y: auto;
-    padding: 80px 30px;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.5s,
+                visibility 0.5s;
 }
 
 .panel.active {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    animation: entrance 0.5s ease both;
+    opacity: 1;
+    visibility: visible;
 }
 
-.panel-content {
+.panel-inner {
+    min-height: 100%;
     width: 100%;
-    max-width: 650px;
-    text-align: center;
-}
-
-.panel h2 {
-    font-family: 'Bodoni Moda', serif;
-    font-size: clamp(42px, 6vw, 80px);
-    font-weight: 400;
-    letter-spacing: -0.04em;
-    margin-bottom: 35px;
-}
-
-.panel p {
-    font-size: 14px;
-    line-height: 1.9;
-    color: var(--secondary);
-    max-width: 450px;
+    max-width: 1000px;
     margin: auto;
+    padding: 110px 40px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.close-panel {
+.panel-header {
     position: absolute;
     top: 35px;
-    right: 35px;
+    left: 42px;
+    right: 42px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.close-button {
     font-size: 10px;
     letter-spacing: 0.15em;
     text-transform: uppercase;
 }
 
-.work-list {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-}
-
-.work-list button {
-    font-family: 'Bodoni Moda', serif;
-    font-size: 30px;
+.panel h2 {
+    font-family: 'Cormorant Garamond', serif;
     font-weight: 400;
+    font-size: clamp(50px, 8vw, 110px);
+    line-height: 1;
+    letter-spacing: -0.04em;
 }
 
-.work-list span {
-    display: block;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 9px;
-    letter-spacing: 0.15em;
-    color: var(--secondary);
-    margin-top: 5px;
+.panel-intro {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(25px, 4vw, 42px);
+    line-height: 1.2;
+    max-width: 720px;
+    margin-top: 35px;
 }
 
-.project-image {
+.panel-description {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.9;
+    max-width: 490px;
+    margin-top: 28px;
+}
+
+/* =================================
+   SELECTED WORK
+   ================================= */
+
+.work-list {
+    margin-top: 50px;
+    border-top: 1px solid var(--line);
+}
+
+.work-item {
+    display: grid;
+    grid-template-columns: 55px 1fr auto;
+    align-items: center;
+    text-align: left;
     width: 100%;
-    display: block;
-    margin-bottom: 25px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--line);
+    transition: color 0.3s;
 }
 
-/* ANIMATION */
+.work-item:hover {
+    color: var(--accent);
+}
 
-@keyframes entrance {
+.work-number {
+    font-size: 11px;
+    color: var(--muted);
+}
+
+.work-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(28px, 4vw, 48px);
+}
+
+.work-type {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+}
+
+/* =================================
+   PROJECT PAGE
+   ================================= */
+
+.project-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.project-visual img {
+    display: block;
+    width: 100%;
+}
+
+.project-visual figcaption {
+    font-size: 9px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    margin-top: 12px;
+    text-transform: uppercase;
+}
+
+/* =================================
+   ANIMATIONS
+   ================================= */
+
+@keyframes appear {
     from {
         opacity: 0;
+        transform: translateY(7px);
     }
 
     to {
         opacity: 1;
+        transform: translateY(0);
     }
 }
 
-/* MOBILE */
-
-@media (max-width: 600px) {
+@media (max-height: 650px) and (min-width: 701px) {
 
     .home {
-        padding: 30px 18px 100px;
+        padding-top: 100px;
+        padding-bottom: 120px;
+    }
+
+    .footer {
+        position: relative;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        margin: 0 42px 30px;
+    }
+
+}
+
+/* =================================
+   MOBILE
+   ================================= */
+
+@media (max-width: 700px) {
+
+    .top-bar {
+        top: 24px;
+        left: 22px;
+        right: 22px;
+    }
+
+    .micro-text {
+        font-size: 8px;
+        letter-spacing: 0.1em;
+    }
+
+    .home {
+        padding: 120px 24px 110px;
     }
 
     .studio-name {
-        font-size: clamp(25px, 7.7vw, 46px);
+        font-size: clamp(38px, 10vw, 65px);
     }
 
-    .studio-description {
+    .studio-subtitle {
+        font-size: 20px;
+    }
+
+    .archive {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        max-width: 320px;
+        margin-top: 40px;
+    }
+
+    .archive-label {
+        align-self: stretch;
+        padding: 0;
+        text-align: left;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .archive-number {
+        font-size: 27px;
+    }
+
+    .archive-category {
         font-size: 8px;
-        letter-spacing: 0.18em;
+        margin-top: 0;
     }
 
-    .film-container {
-        width: 260px;
-        margin-top: 38px;
-        transform: none;
+    .archive-note {
+        align-self: stretch;
+        text-align: right;
+        padding-bottom: 0;
+    }
+
+    .archive-note p {
+        font-size: 17px;
+    }
+
+    .archive-note span {
+        margin-top: 6px;
+    }
+
+    .archive-index {
+        margin-top: 18px;
+    }
+
+    .footer {
+        position: relative;
+        bottom: auto;
+        left: auto;
+        right: auto;
+        margin: 0 22px 24px;
+        display: block;
+    }
+
+    .footer-note,
+    .footer-year {
+        display: none;
     }
 
     .navigation {
-        bottom: 30px;
-        gap: 26px;
+        gap: 25px;
     }
 
     .navigation button {
         font-size: 9px;
+    }
+
+    .panel-inner {
+        padding: 110px 25px 50px;
+    }
+
+    .panel-header {
+        left: 25px;
+        right: 25px;
+        top: 25px;
+    }
+
+    .project-layout {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .work-item {
+        grid-template-columns: 30px 1fr;
+    }
+
+    .work-type {
+        grid-column: 2;
+        margin-top: 5px;
     }
 
 }
@@ -326,71 +703,174 @@ button {
 
 <body>
 
-<!-- HOMEPAGE -->
+<!-- PERIPHERAL INFORMATION -->
+
+<header class="top-bar">
+
+    <div class="micro-text">
+        Independent<br>
+        Creative Practice
+    </div>
+
+    <div class="micro-text location">
+        Madrid, ES<br>
+        <span>Available worldwide</span>
+    </div>
+
+</header>
+
+<!-- MAIN COMPOSITION -->
 
 <main class="home">
 
     <div class="composition">
 
-        <h1 class="studio-name">
-            DIEGO M. ALCALÁ
-        </h1>
+        <div class="identity">
 
-        <p class="studio-description">
-            Independent Creative Studio
-        </p>
+            <h1 class="studio-name">
+                Diego M. Alcalá
+            </h1>
 
-        <div class="film-container">
+            <p class="studio-subtitle">
+                Brand Worlds
+            </p>
 
-            <div class="cinematic-window">
+        </div>
 
-                <button
-                    onclick="toggleSelector()"
-                    aria-label="Choose a project"
-                    style="width:100%;height:100%;display:block;"
-                >
+        <div class="archive">
 
-                    <img
-                        src="boras.png"
-                        alt="Fine sawdust drifting across aged wood"
-                    >
+            <!-- LEFT ANNOTATION -->
 
-                </button>
+            <aside class="archive-label">
 
-                <div
-                    class="project-selector"
-                    id="projectSelector"
-                >
+                <div class="archive-number" id="archiveNumber">
+                    001
+                </div>
 
-                    <button onclick="openPanel('boras')">
-                        01 — BORAS
-                    </button>
+                <div class="archive-category" id="archiveCategory">
+                    Material studies<br>
+                    <span>Collection I</span>
+                </div>
 
-                    <button disabled>
-                        02 — LOEWE
-                    </button>
+            </aside>
 
-                    <button disabled>
-                        03 — MIDNIGHT COSMETICS
-                    </button>
+            <!-- FILM WINDOW -->
 
-                    <button onclick="toggleSelector()">
-                        CLOSE
+            <div class="film-container">
+
+                <div class="film-frame">
+
+                    <div class="film-window">
+
+                        <button
+                            class="film-trigger"
+                            id="filmTrigger"
+                            onclick="toggleSelector()"
+                            aria-label="Open project index"
+                            aria-expanded="false"
+                        >
+
+                            <img
+                                id="filmImage"
+                                src="boras.png"
+                                alt="Fine sawdust drifting across aged wood"
+                            >
+
+                        </button>
+
+                        <div class="selector" id="selector">
+
+                            <span class="selector-heading">
+                                An archive of impressions
+                            </span>
+
+                            <button onclick="selectProject(0)">
+                                01. Boras
+                            </button>
+
+                            <button onclick="selectProject(1)">
+                                02. Loewe
+                            </button>
+
+                            <button onclick="selectProject(2)">
+                                03. Midnight Cosmetics
+                            </button>
+
+                            <button
+                                class="selector-close"
+                                onclick="toggleSelector(false)"
+                            >
+                                Close ×
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="film-caption">
+
+                    <span class="film-title" id="filmTitle">
+                        Fig. 01 — Boras
+                    </span>
+
+                    <button onclick="openCurrentProject()">
+                        View project ↗
                     </button>
 
                 </div>
 
             </div>
 
-            <div class="film-information">
+            <!-- RIGHT ANNOTATION -->
 
-                <span>01 / 03</span>
+            <aside class="archive-note">
 
-                <button onclick="toggleSelector()">
-                    Index +
-                </button>
+                <p id="archiveNote">
+                    An impression<br>
+                    of matter.
+                </p>
 
-            </div>
+                <span id="archiveMedium">
+                    Visual study — 2026
+                </span>
+
+            </aside>
+
+        </div>
+
+        <!-- NUMBERED INDEX -->
+
+        <div class="archive-index">
+
+            <button
+                class="index-button active"
+                onclick="selectProject(0)"
+                aria-label="Select Boras"
+            >
+                01
+            </button>
+
+            <span class="index-divider"></span>
+
+            <button
+                class="index-button"
+                onclick="selectProject(1)"
+                aria-label="Select Loewe"
+            >
+                02
+            </button>
+
+            <span class="index-divider"></span>
+
+            <button
+                class="index-button"
+                onclick="selectProject(2)"
+                aria-label="Select Midnight Cosmetics"
+            >
+                03
+            </button>
 
         </div>
 
@@ -398,51 +878,94 @@ button {
 
 </main>
 
-<!-- NAVIGATION -->
+<!-- FOOTER -->
 
-<nav class="navigation">
+<footer class="footer">
 
-    <button onclick="openPanel('work')">
-        Selected Work
-    </button>
+    <div class="footer-note">
+        Occasionally, the strange.
+    </div>
 
-    <button onclick="openPanel('about')">
-        About
-    </button>
+    <nav class="navigation">
 
-    <button onclick="openPanel('contact')">
-        Contact
-    </button>
+        <button onclick="openPanel('work')">
+            Selected Work
+        </button>
 
-</nav>
+        <button onclick="openPanel('about')">
+            About
+        </button>
+
+        <button onclick="openPanel('contact')">
+            Contact
+        </button>
+
+    </nav>
+
+    <div class="footer-year">
+        © 2026
+    </div>
+
+</footer>
 
 <!-- SELECTED WORK -->
 
-<section class="panel" id="work">
+<section class="panel" id="work" aria-hidden="true" inert>
 
-    <button class="close-panel" onclick="closePanels()">
-        Close ×
-    </button>
+    <header class="panel-header">
 
-    <div class="panel-content">
+        <span class="micro-text">
+            Diego M. Alcalá
+        </span>
 
-        <h2>Selected Work</h2>
+        <button class="close-button" onclick="closePanels()">
+            Close ×
+        </button>
+
+    </header>
+
+    <div class="panel-inner">
+
+        <h2>Selected Work.</h2>
 
         <div class="work-list">
 
-            <button onclick="openPanel('boras')">
-                BORAS
-                <span>Spatial Design / Fashion</span>
+            <button class="work-item" onclick="openPanel('boras')">
+
+                <span class="work-number">001</span>
+
+                <span class="work-name">Boras</span>
+
+                <span class="work-type">
+                    Spatial Design / Fashion
+                </span>
+
             </button>
 
-            <button onclick="openPanel('coming-soon')">
-                LOEWE
-                <span>Brand Experience / Concept Study</span>
+            <button class="work-item" onclick="openPanel('loewe')">
+
+                <span class="work-number">002</span>
+
+                <span class="work-name">Loewe</span>
+
+                <span class="work-type">
+                    Brand Experience / Concept
+                </span>
+
             </button>
 
-            <button onclick="openPanel('coming-soon')">
-                Midnight Cosmetics
-                <span>Spatial Design / Installation</span>
+            <button class="work-item" onclick="openPanel('midnight')">
+
+                <span class="work-number">003</span>
+
+                <span class="work-name">
+                    Midnight Cosmetics
+                </span>
+
+                <span class="work-type">
+                    Spatial Design / Installation
+                </span>
+
             </button>
 
         </div>
@@ -451,27 +974,134 @@ button {
 
 </section>
 
-<!-- BORAS PROJECT -->
+<!-- BORAS -->
 
-<section class="panel" id="boras">
+<section class="panel" id="boras" aria-hidden="true" inert>
 
-    <button class="close-panel" onclick="closePanels()">
-        Close ×
-    </button>
+    <header class="panel-header">
 
-    <div class="panel-content">
+        <button class="close-button" onclick="openPanel('work')">
+            ← Selected Work
+        </button>
 
-        <h2>BORAS</h2>
+        <button class="close-button" onclick="closePanels()">
+            Close ×
+        </button>
 
-        <img
-            class="project-image"
-            src="boras.png"
-            alt="BORAS conceptual material study"
-        >
+    </header>
 
-        <p>
-            A dialogue between fashion, materiality
-            and the raw beauty of the everyday.
+    <div class="panel-inner">
+
+        <div class="project-layout">
+
+            <div>
+
+                <p class="micro-text">
+                    001 — Spatial Design / Fashion
+                </p>
+
+                <h2>Boras.</h2>
+
+                <p class="panel-intro">
+                    An impression of matter.
+                </p>
+
+                <p class="panel-description">
+                    An exploration of the relationship between
+                    fashion, craftsmanship and the raw beauty
+                    of everyday materials.
+                    <br><br>
+                    A spatial concept situated within the
+                    atmosphere of a woodworking workshop.
+                </p>
+
+            </div>
+
+            <figure class="project-visual">
+
+                <img
+                    src="boras.png"
+                    alt="Conceptual study of sawdust and wood"
+                >
+
+                <figcaption>
+                    Fig. 01 — Material impression
+                </figcaption>
+
+            </figure>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- LOEWE -->
+
+<section class="panel" id="loewe" aria-hidden="true" inert>
+
+    <header class="panel-header">
+
+        <button class="close-button" onclick="openPanel('work')">
+            ← Selected Work
+        </button>
+
+        <button class="close-button" onclick="closePanels()">
+            Close ×
+        </button>
+
+    </header>
+
+    <div class="panel-inner">
+
+        <p class="micro-text">
+            002 — Independent Concept Study
+        </p>
+
+        <h2>Loewe.</h2>
+
+        <p class="panel-intro">
+            An impression of ritual.
+        </p>
+
+        <p class="panel-description">
+            Project presentation currently in development.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- MIDNIGHT COSMETICS -->
+
+<section class="panel" id="midnight" aria-hidden="true" inert>
+
+    <header class="panel-header">
+
+        <button class="close-button" onclick="openPanel('work')">
+            ← Selected Work
+        </button>
+
+        <button class="close-button" onclick="closePanels()">
+            Close ×
+        </button>
+
+    </header>
+
+    <div class="panel-inner">
+
+        <p class="micro-text">
+            003 — Spatial Design / Installation
+        </p>
+
+        <h2>Midnight<br>Cosmetics.</h2>
+
+        <p class="panel-intro">
+            An impression of desire.
+        </p>
+
+        <p class="panel-description">
+            Project presentation currently in development.
         </p>
 
     </div>
@@ -480,25 +1110,47 @@ button {
 
 <!-- ABOUT -->
 
-<section class="panel" id="about">
+<section class="panel" id="about" aria-hidden="true" inert>
 
-    <button class="close-panel" onclick="closePanels()">
-        Close ×
-    </button>
+    <header class="panel-header">
 
-    <div class="panel-content">
+        <span class="micro-text">
+            Diego M. Alcalá
+        </span>
 
-        <h2>About</h2>
+        <button class="close-button" onclick="closePanels()">
+            Close ×
+        </button>
 
-        <p>
-            DIEGO M. ALCALÁ is an independent creative
-            studio exploring the relationship between
-            space, image and emotion.
-            <br><br>
+    </header>
+
+    <div class="panel-inner">
+
+        <h2>About.</h2>
+
+        <p class="panel-intro">
             Finding beauty in the ordinary.
-            And occasionally, the strange.
+            <br>
+            <em>And occasionally, the strange.</em>
+        </p>
+
+        <p class="panel-description">
+
+            DIEGO M. ALCALÁ is an independent creative
+            practice exploring the relationship between
+            space, image, materiality and emotion.
+
             <br><br>
+
+            Working across spatial design, art direction
+            and brand experiences, the practice seeks to
+            create distinctive worlds through atmosphere,
+            narrative and unexpected associations.
+
+            <br><br>
+
             Based in Madrid, Spain.
+
         </p>
 
     </div>
@@ -507,19 +1159,34 @@ button {
 
 <!-- CONTACT -->
 
-<section class="panel" id="contact">
+<section class="panel" id="contact" aria-hidden="true" inert>
 
-    <button class="close-panel" onclick="closePanels()">
-        Close ×
-    </button>
+    <header class="panel-header">
 
-    <div class="panel-content">
+        <span class="micro-text">
+            Diego M. Alcalá
+        </span>
 
-        <h2>Contact</h2>
+        <button class="close-button" onclick="closePanels()">
+            Close ×
+        </button>
 
-        <p>
+    </header>
+
+    <div class="panel-inner">
+
+        <h2>Contact.</h2>
+
+        <p class="panel-intro">
+            Let's create something unexpected.
+        </p>
+
+        <p class="panel-description">
             Available for creative collaborations,
-            spatial design and brand experiences.
+            spatial design, art direction and
+            brand experiences.
+            <br><br>
+            Madrid, Spain.
             <br><br>
             Contact details coming soon.
         </p>
@@ -528,71 +1195,265 @@ button {
 
 </section>
 
-<!-- TEMPORARY PROJECT PANEL -->
-
-<section class="panel" id="coming-soon">
-
-    <button class="close-panel" onclick="closePanels()">
-        Close ×
-    </button>
-
-    <div class="panel-content">
-
-        <h2>Coming Soon</h2>
-
-        <p>
-            Currently in development.
-        </p>
-
-    </div>
-
-</section>
-
-<!-- INTERACTIONS -->
+<!-- JAVASCRIPT -->
 
 <script>
 
-function toggleSelector() {
+const projects = [
 
-    document
-        .getElementById('projectSelector')
-        .classList.toggle('active');
+    {
+        number: "001",
+        title: "Fig. 01 — Boras",
+        category: "Material studies",
+        collection: "Collection I",
+        note: "An impression<br>of matter.",
+        medium: "Visual study — 2026",
+        image: "boras.png",
+        video: null,
+        alt: "Fine sawdust drifting across aged wood",
+        panel: "boras"
+    },
+
+    {
+        number: "002",
+        title: "Fig. 02 — Loewe",
+        category: "Ritual studies",
+        collection: "Collection I",
+        note: "An impression<br>of ritual.",
+        medium: "In development",
+        image: null,
+        video: null,
+        alt: "",
+        panel: "loewe"
+    },
+
+    {
+        number: "003",
+        title: "Fig. 03 — Midnight Cosmetics",
+        category: "Object studies",
+        collection: "Collection I",
+        note: "An impression<br>of desire.",
+        medium: "In development",
+        image: null,
+        video: null,
+        alt: "",
+        panel: "midnight"
+    }
+
+];
+
+let currentProject = 0;
+let previousFocus = null;
+
+function toggleSelector(force) {
+
+    const selector = document.getElementById("selector");
+
+    const active = typeof force === "boolean"
+        ? force
+        : !selector.classList.contains("active");
+
+    selector.classList.toggle("active", active);
+
+    document.getElementById("filmTrigger")
+        .setAttribute("aria-expanded", active);
+
+    if (active) {
+        selector.querySelector("button").focus();
+    }
+
+}
+
+function selectProject(index) {
+
+    currentProject = index;
+
+    const project = projects[index];
+
+    document.getElementById("archiveNumber")
+        .textContent = project.number;
+
+    document.getElementById("filmTitle")
+        .textContent = project.title;
+
+    document.getElementById("archiveCategory")
+        .innerHTML =
+            project.category +
+            "<br><span>" +
+            project.collection +
+            "</span>";
+
+    document.getElementById("archiveNote")
+        .innerHTML = project.note;
+
+    document.getElementById("archiveMedium")
+        .textContent = project.medium;
+
+    const trigger = document.getElementById("filmTrigger");
+
+    trigger.replaceChildren();
+
+    if (project.video) {
+
+        const video = document.createElement("video");
+
+        video.src = project.video;
+        video.poster = project.image || "";
+        video.autoplay = true;
+        video.muted = true;
+        video.loop = true;
+        video.playsInline = true;
+
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            video.autoplay = false;
+        }
+
+        trigger.appendChild(video);
+
+    } else if (project.image) {
+
+        const image = document.createElement("img");
+
+        image.src = project.image;
+        image.alt = project.alt;
+
+        trigger.appendChild(image);
+
+    } else {
+
+        const placeholder = document.createElement("div");
+
+        placeholder.style.cssText = `
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 12px;
+            background: #DED8CF;
+            color: #827B73;
+        `;
+
+        const number = document.createElement("span");
+
+        number.style.cssText = `
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 42px;
+        `;
+
+        number.textContent = project.number;
+
+        const label = document.createElement("span");
+
+        label.style.cssText = `
+            font-size: 9px;
+            letter-spacing: .18em;
+        `;
+
+        label.textContent = "IN DEVELOPMENT";
+
+        placeholder.append(number, label);
+
+        trigger.appendChild(placeholder);
+
+    }
+
+    document.querySelectorAll(".index-button")
+        .forEach((button, i) => {
+
+            button.classList.toggle("active", i === index);
+
+            button.setAttribute(
+                "aria-pressed",
+                i === index
+            );
+
+        });
+
+    toggleSelector(false);
+
+}
+
+function openCurrentProject() {
+
+    openPanel(projects[currentProject].panel);
 
 }
 
 function openPanel(id) {
 
-    closePanels();
+    const alreadyOpen = document.querySelector(".panel.active");
 
-    document
-        .getElementById('projectSelector')
-        .classList.remove('active');
+    if (!alreadyOpen) {
+        previousFocus = document.activeElement;
+    }
 
-    document
-        .getElementById(id)
-        .classList.add('active');
+    closePanels(false);
+
+    toggleSelector(false);
+
+    const panel = document.getElementById(id);
+
+    panel.classList.add("active");
+
+    panel.setAttribute("aria-hidden", "false");
+
+    panel.inert = false;
+
+    document.body.style.overflow = "hidden";
+
+    document.querySelector(".home").inert = true;
+    document.querySelector(".footer").inert = true;
+
+    panel.scrollTop = 0;
+
+    panel.querySelector("button").focus();
 
 }
 
-function closePanels() {
+function closePanels(restoreFocus = true) {
 
-    document
-        .querySelectorAll('.panel')
+    document.querySelectorAll(".panel")
         .forEach(panel => {
-            panel.classList.remove('active');
+
+            panel.classList.remove("active");
+
+            panel.setAttribute("aria-hidden", "true");
+
+            panel.inert = true;
+
         });
 
+    document.body.style.overflow = "";
+
+    document.querySelector(".home").inert = false;
+    document.querySelector(".footer").inert = false;
+
+    if (restoreFocus && previousFocus) {
+
+        previousFocus.focus();
+
+        previousFocus = null;
+
+    }
+
 }
 
-document.addEventListener('keydown', function(event) {
+document.addEventListener("keydown", event => {
 
-    if (event.key === 'Escape') {
+    if (event.key === "Escape") {
 
-        closePanels();
+        if (document.querySelector(".panel.active")) {
 
-        document
-            .getElementById('projectSelector')
-            .classList.remove('active');
+            closePanels();
+
+        } else {
+
+            toggleSelector(false);
+
+            document.getElementById("filmTrigger").focus();
+
+        }
 
     }
 
