@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>DIEGO M. ALCALÁ — Brand Worlds</title><meta name="description" content="Independent creative practice. Design &amp; Production Services. Based in Madrid, available worldwide."><link rel="icon" href="favicon.ico" sizes="any"><link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="apple-touch-icon.png">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>DIEGO M. ALCALÁ — Brand Worlds</title><meta name="description" content="Independent creative practice in Madrid specialising in spatial design, art direction, brand experiences and design &amp; production services. Available worldwide."><link rel="icon" href="favicon.ico" sizes="any"><link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="canonical" href="https://diegomalcala.com/">
 <meta property="og:type" content="website"><meta property="og:url" content="https://diegomalcala.com/"><meta property="og:title" content="DIEGO M. ALCALÁ — Brand Worlds"><meta property="og:description" content="Design &amp; Production Services. Independent creative practice based in Madrid."><meta property="og:image" content="https://diegomalcala.com/social-preview.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Diego M. Alcalá — Brand Worlds — Design &amp; Production Services"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="DIEGO M. ALCALÁ — Brand Worlds"><meta name="twitter:description" content="Design &amp; Production Services"><meta name="twitter:image" content="https://diegomalcala.com/social-preview.png">
 <style>
@@ -50,9 +50,60 @@ footer{gap:12px}.caption{min-width:0;flex:1}.next{white-space:nowrap}.descriptio
 @media(min-width:601px), (orientation:landscape){.project-body{display:contents}}
 
 
-</style></head><body>
+
+/* V18 — restrained editorial motion */
+.entry h1{letter-spacing:-.055em;font-weight:600}
+.entry .tagline{letter-spacing:.09em}
+@keyframes identityReveal{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+.entry h1{animation:identityReveal .65s cubic-bezier(.2,.7,.2,1) both}
+.entry .tagline{animation:identityReveal .6s .12s ease both}
+.entry nav{animation:identityReveal .5s .22s ease both}
+@keyframes previewReveal{from{opacity:0;transform:translateY(calc(-50% + 5px))}to{opacity:1;transform:translateY(-50%)}}
+.index-preview.fade{animation:previewReveal .42s cubic-bezier(.2,.7,.2,1) both}
+@media(prefers-reduced-motion:reduce){.entry h1,.entry .tagline,.entry nav,.index-preview.fade{animation:none}}
+
+/* V19 — subtle photographic grading, without changing source files. */
+.frame img, .index-preview {filter:var(--photo-grade,none)}
+[data-grade="BORAS"] {--photo-grade:contrast(1.05) saturate(.95) sepia(.035)}
+[data-grade="LUDOVIC"] {--photo-grade:brightness(1.045) contrast(1.015) saturate(.97) sepia(.015)}
+[data-grade="MIDNIGHT COSMETICS"] {--photo-grade:contrast(1.035) saturate(.96) sepia(.012)}
+[data-grade="LOEWE"] {--photo-grade:contrast(1.04) saturate(.98)}
+/* V21 — burgundy veil, revealed on hover. */
+.frame .photo-veil{display:none}
+@media (hover:hover) and (pointer:fine){
+.frame .photo-veil{display:block;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);filter:url(#burgundy-veil);opacity:.15;pointer-events:none;transition:opacity .6s ease;animation:none}
+.frame img:not(.photo-veil):hover + .photo-veil{opacity:0}
+}
+@media(prefers-reduced-motion:reduce){.frame .photo-veil{transition:none}}
+
+/* V22 — home identity and transition */
+.entry h1{font-size:26.4px}
+.entry .identity{gap:5px}
+.entry .tagline{letter-spacing:.14em}
+.entry nav button{transition:color .25s ease,opacity .25s ease}
+@media(hover:hover){.entry nav button:hover{color:#58232E;opacity:1}}
+.entry nav button:focus-visible{color:#58232E}
+@media(max-width:600px){.entry h1{font-size:23px}}
+.entry.leaving{animation:homeExit .24s ease both;pointer-events:none}
+@keyframes homeExit{to{opacity:0;transform:translateY(-4px)}}
+.panel.from-home .panel-content{animation:identityReveal .42s ease both}
+@media(prefers-reduced-motion:reduce){.entry.leaving,.panel.from-home .panel-content{animation:none}.entry nav button{transition:none}}
+
+/* Lower mobile header without shifting the centered project composition. */
+@media(max-width:600px) and (orientation:portrait){.gallery header{position:relative;top:20px}}
+
+/* V25 — reserve description space in both states; no gallery reflow. */
+.project-details #detailsToggle{display:inline-flex;align-items:center;gap:4px;color:#666;font-size:11px;line-height:1.6;padding:0;text-align:left}
+.project-details #detailsToggle::before{content:"";width:0;height:0;border-top:4px solid transparent;border-bottom:4px solid transparent;border-left:6px solid currentColor;transition:transform .25s ease}
+.project-details.is-open #detailsToggle::before{transform:rotate(90deg)}
+.project-details .description{opacity:0;visibility:hidden;transform:translateY(4px);transition:opacity .3s ease,transform .3s ease,visibility 0s linear .3s;pointer-events:none}
+.project-details.is-open .description{opacity:1;visibility:visible;transform:translateY(0);transition:opacity .35s ease,transform .35s ease,visibility 0s;pointer-events:auto}
+@media(max-width:600px){.project-details #detailsToggle{padding:8px 0}}
+@media(prefers-reduced-motion:reduce){.project-details .description,.project-details #detailsToggle::before{transition:none;transform:none}.project-details.is-open #detailsToggle::before{transform:rotate(90deg)}}
+</style><script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"Diego M. Alcalá — Brand Worlds","url":"https://diegomalcala.com/","description":"Independent creative practice: spatial design, art direction, brand experiences and design & production services.","email":"malcaladiego@gmail.com","sameAs":["https://www.instagram.com/diegomalcala/"],"areaServed":"Worldwide"}</script></head><body>
+<svg width="0" height="0" aria-hidden="true" style="position:absolute"><defs><filter id="burgundy-veil" color-interpolation-filters="sRGB"><feFlood flood-color="#58232E" result="tint"/><feComposite in="tint" in2="SourceAlpha" operator="in"/></filter></defs></svg>
 <section class="entry" id="entry"><div class="identity"><h1>DIEGO M. ALCALÁ</h1><p class="tagline">Brand Worlds</p></div><nav aria-label="Main navigation"><button id="enter">Work ↗</button><button id="contactBtn">Contact ↗</button></nav></section>
-<main class="gallery" id="gallery" hidden><header><button class="brand" id="home">DIEGO M. ALCALÁ</button><nav><button id="indexBtn">Index</button><button id="infoBtn">Contact</button></nav></header><div class="project-body"><section class="stage"><button id="prev" aria-label="Previous image">←</button><div class="frame" id="frame"></div><button id="next" aria-label="Next image">→</button></section><footer><div class="caption" aria-live="polite"><strong id="title"></strong><div class="muted" id="discipline"></div><div class="muted" id="count"></div><details id="descriptionBox"><summary>About project</summary><p class="description" id="description"></p></details></div><button class="next" id="nextProject">Next project →</button></footer></div></main>
+<main class="gallery" id="gallery" hidden><header><button class="brand" id="home">DIEGO M. ALCALÁ</button><nav><button id="indexBtn">Index</button><button id="infoBtn">Contact</button></nav></header><div class="project-body"><section class="stage"><button id="prev" aria-label="Previous image">←</button><div class="frame" id="frame"></div><button id="next" aria-label="Next image">→</button></section><footer><div class="caption" aria-live="polite"><strong id="title"></strong><div class="muted" id="discipline"></div><div class="muted" id="count"></div><div id="descriptionBox" class="project-details"><button id="detailsToggle" type="button" aria-expanded="false" aria-controls="description">About project</button><p class="description" id="description" aria-hidden="true"></p></div></div><button class="next" id="nextProject">Next project →</button></footer></div></main>
 <section class="panel" id="panel" role="dialog" aria-modal="true" aria-label="Work and contact" hidden><button class="close" id="close">Close ×</button><div class="panel-content" id="panelContent"></div></section>
 <script>
 // Add image paths to each images array. Files can be JPG, PNG or WebP.
@@ -63,11 +114,7 @@ const projects=[
 {name:'LOEWE',description:'A conceptual dinner experience exploring craftsmanship, sculptural forms and the ritual of gathering around a table.',discipline:'Dinner / Concept proposal / 2026',images:['fotos/loewe/02.jpg','fotos/loewe/03.jpg','fotos/loewe/04.jpeg','fotos/loewe/01.jpg']}
 ];
 const $=id=>document.getElementById(id);let p=0,i=0,returnFocus=null,initialIndex=false;const total=()=>Math.max(1,projects[p].images.length);const pad=n=>String(n).padStart(2,'0');
-function render(){const project=projects[p];$('title').textContent=project.name;$('descriptionBox').hidden=!project.description;$('descriptionBox').open=false;$('description').textContent=project.description||'';$('discipline').textContent=project.discipline;$('count').textContent=project.images.length?`${pad(i+1)} / ${pad(total())}`:'Images pending';const frame=$('frame');frame.replaceChildren();function placeholder(){const box=document.createElement('div');box.className='placeholder';const name=document.createElement('span');name.textContent=project.name;const note=document.createElement('small');note.textContent='Image pending';box.append(name,note);frame.replaceChildren(box)}if(project.images[i]){const img=new Image();img.alt=`${project.name} — ${i+1}`;img.decoding="async";img.className='fade'+(project.name==='LOEWE'?'':' editorial');img.onerror=()=>{if(frame.contains(img))placeholder()};frame.append(img);img.src=project.images[i]}else placeholder();$('prev').disabled=$('next').disabled=total()<2;$('prev').style.opacity=$('next').style.opacity=total()<2?'.25':'';}
-function move(d){i=(i+d+total())%total();render()}function choose(n){p=n;i=0;initialIndex=false;$('entry').hidden=true;$('gallery').hidden=false;render();closePanel();$('indexBtn').focus()}
-$('enter').onclick=()=>{initialIndex=true;openPanel('index');$('entry').hidden=true};$('contactBtn').onclick=()=>{initialIndex=true;openPanel('info');$('entry').hidden=true};$('home').onclick=()=>{$('gallery').hidden=true;$('entry').hidden=false;$('enter').focus()};$('prev').onclick=()=>move(-1);$('next').onclick=()=>move(1);$('nextProject').onclick=()=>choose((p+1)%projects.length);
-function openPanel(type){returnFocus=document.activeElement;const content=$('panelContent');content.replaceChildren();if(type==='index'){const list=document.createElement('div');list.className='project-list index-layout';const preview=new Image();preview.className='index-preview fade';preview.alt='';preview.hidden=true;projects.forEach((project,n)=>{const b=document.createElement('button');const s=document.createElement('span');s.textContent=pad(n+1);b.append(s,document.createTextNode(project.name));b.onclick=()=>choose(n);const show=()=>{preview.classList.toggle('editorial',project.name!=='LOEWE');preview.src=project.images[0];preview.hidden=false};const hide=()=>{preview.hidden=true};b.addEventListener('mouseenter',show);b.addEventListener('mouseleave',hide);b.addEventListener('focus',show);b.addEventListener('blur',hide);list.append(b)});list.append(preview);content.append(list)}else{const heading=document.createElement('h2');heading.textContent='Diego M. Alcalá';const bio=document.createElement('p');bio.textContent='Independent creative practice exploring the relationship between space, image and experience.';const contact=document.createElement('p');contact.className='muted';contact.textContent='Based in Madrid, available worldwide.';const disciplines=document.createElement('p');disciplines.className='muted';disciplines.textContent='Design & Production Services';const links=document.createElement('div');links.className='contact-links';[['malcaladiego@gmail.com ↗','mailto:malcaladiego@gmail.com'],['@diegomalcala ↗','https://www.instagram.com/diegomalcala/']].forEach(([label,url])=>{const item=document.createElement('a');item.textContent=label;item.href=url;if(url.startsWith('https:')){item.target='_blank';item.rel='noopener noreferrer'}links.append(item)});const invitation=document.createElement('p');invitation.textContent="Let's create something together.";const tagline=document.createElement('p');tagline.className='muted';tagline.textContent='Brand Worlds';content.append(heading,tagline,bio,disciplines,contact,invitation,links)}$('panel').hidden=false;$('gallery').inert=true;$('close').focus()}
-function closePanel(){if($('panel').hidden)return;$('panel').hidden=true;$('gallery').inert=false;if(initialIndex){initialIndex=false;$('entry').hidden=false;$('gallery').hidden=true;(returnFocus||$('enter')).focus()}else{returnFocus?.focus()}}
-$('indexBtn').onclick=()=>openPanel('index');$('infoBtn').onclick=()=>openPanel('info');$('close').onclick=closePanel;
-document.addEventListener('keydown',e=>{if(!$('panel').hidden){if(e.key==='Escape')closePanel();if(e.key==='Tab'){const items=[...$('panel').querySelectorAll('button,a')];if(e.shiftKey&&document.activeElement===items[0]){e.preventDefault();items.at(-1).focus()}else if(!e.shiftKey&&document.activeElement===items.at(-1)){e.preventDefault();items[0].focus()}}return}if($('gallery').hidden)return;if(e.key==='ArrowLeft')move(-1);if(e.key==='ArrowRight')move(1)});let start=null;$('frame').addEventListener('touchstart',e=>{start=e.touches.length===1?{x:e.changedTouches[0].clientX,y:e.changedTouches[0].clientY}:null},{passive:true});$('frame').addEventListener('touchend',e=>{if(start===null)return;const delta=e.changedTouches[0].clientX-start.x;const dy=e.changedTouches[0].clientY-start.y;if(Math.abs(delta)>45&&Math.abs(delta)>Math.abs(dy)*1.3)move(delta<0?1:-1);start=null},{passive:true});
-</script></body></html>
+const preloaded=new Map();
+function preload(src){if(!src||preloaded.has(src))return;const image=new Image();image.decoding="async";image.fetchPriority="low";preloaded.set(src,image);image.src=src;}
+function warmAdjacent(){const images=projects[p].images;preload(images[(i+1)%images.length]);preload(images[(i-1+images.length)%images.length]);preload(projects[(p+1)%projects.length].images[0]);}
+function setDetails(open){$('detailsToggle').setAttribute('aria-expanded',String(open));$('description').setAttribute('aria-hidden',String(!open))
